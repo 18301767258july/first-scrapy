@@ -2,7 +2,7 @@
 import scrapy
 
 import re
-
+import datetime
 from scrapy.http import Request
 from urllib import parse
 from blog_jobbole.items import BlogJobboleItem
@@ -62,6 +62,10 @@ class JobboleSpider(scrapy.Spider):
         tags = ",".join(tag_list)
         article_item["front_img_url"] = [front_img_url]
         article_item["title"] = title
+        try:
+            create_date = datetime.datetime.strptime(create_date,'%Y/%m/%d').date()
+        except Exception as e:
+            create_date = datetime.datetime.now().date()
         article_item["create_date"] = create_date
         article_item["praise_num"] = praise_num
         article_item["fav_num"] = fav_num

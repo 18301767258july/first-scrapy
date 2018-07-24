@@ -64,9 +64,10 @@ NEWSPIDER_MODULE = 'blog_jobbole.spiders'
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'blog_jobbole.pipelines.JsonExporterPipeline': 300,
+    #'blog_jobbole.pipelines.JsonExporterPipeline': 300,
     #'scrapy.pipelines.images.ImagesPipeline':2,
     #'blog_jobbole.pipelines.JsonWithEncodingPipeline':1,
+    'blog_jobbole.pipelines.MysqlTwistedPipeline':1,
 }
 IMAGES_URLS_FIELD = "front_img_url"
 project_dir = os.path.abspath(os.path.dirname(__file__))
@@ -92,3 +93,9 @@ IMAGES_MIN_HEIGHT = 100
 #HTTPCACHE_DIR='httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES=[]
 #HTTPCACHE_STORAGE='scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+MYSQL_HOST = 'localhost'
+USER = 'root'
+PASS = 'zhao5254'
+DATABASE_NAME = 'test_scrapy'
+
